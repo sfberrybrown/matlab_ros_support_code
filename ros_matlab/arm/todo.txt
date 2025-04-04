@@ -1,0 +1,1 @@
+get code from arm competition at /media/juan/hdd/school/teaching/eece4523-robotics/lecs/code_competition and place here.
