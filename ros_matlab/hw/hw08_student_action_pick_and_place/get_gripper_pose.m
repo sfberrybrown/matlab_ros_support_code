@@ -1,4 +1,4 @@
-function mat_R_T_G = get_gripper_pose(optns,fing_alignment)
+function mat_R_T_G = get_gripper_pose(optns,find_alignment)
 % Return the gripper pose. 
 % Since we are computing the pose wrt to tool0, we do not have information
 % of the fingers. The 'fing_alignment' will tell whether the fingers are
@@ -7,7 +7,7 @@ function mat_R_T_G = get_gripper_pose(optns,fing_alignment)
 
     %% Local variables
     if nargin == 1
-        fing_alignment = 'x';
+        find_alignment = 'x';
     end
 
     % Indicates matlab's base_link does not match ros. Need adjustment.
@@ -35,10 +35,10 @@ function mat_R_T_G = get_gripper_pose(optns,fing_alignment)
     end  
         
     % Convert gripper pose to matlab format
-    mat_R_T_G = ros2matlabPose(current_pose,frameAdjustmentFlag,toolAdjustmentFlag); 
+    mat_R_T_G = ros2matlabPose(current_pose,frameAdjustmentFlag,toolAdjustmentFlag,optns); 
 
     %% Adjust orientation of gripper
-    if strcmpi(fing_alignment,'x')
+    if strcmpi(find_alignment,'x')
         ori = eul2tform([0,0,pi]);  
     % 'y'
     else
