@@ -28,7 +28,7 @@ function [res,state] = doGrip(type,optns,doGripValue )
     end
 
     %% TODO: Pack gripper information intro ROS message
-
+    grip_goal = packGripGoal_struct(gripPos,grip_msg, optns);
 
     %% Pending: Check if fingers already at goal
     % Get current finger position

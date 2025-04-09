@@ -16,7 +16,7 @@ function [ret,q,state,status] = goHome(config,optns)
     %                   qz = zeros(1,6)
     %                   qr = [0 0 pi/2 -pi/2 0 0]
     % optns (dict) : arguments for class
-    %
+    % 
     % Outputs
     % resultMsg (struc) - Result message
     % state [char] - Final goal state

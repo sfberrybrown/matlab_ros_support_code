@@ -6,16 +6,17 @@ clear
 rosshutdown;
 
 pause(2);       % Check if more down time helps diminish connection errors
-masterhostIP = "192.168.64.129";
-rosinit(masterhostIP)
+%masterhostIP = "192.168.64.129";
+%rosinit(masterhostIP)
+rosinit("192.168.56.101", 11311, "NodeHost", "192.168.56.1")
 
-% if exist('r','var') && isvalid(r)
-%     disp('Robot handle exists and is valid.')
-% else
-%     r = rosClassHandle;
-% end
+if exist('r','var') && isvalid(r)
+     disp('Robot handle exists and is valid.')
+ else
+     r = rosClassHandle;
+ end
 r = rosClassHandle;
-%y = yoloClassHandle;
+y = yoloClassHandle;
 keys   = ["debug", "toolFlag", "traj_steps", "x_offset", "y_offset", "z_offset", "traj_duration", "frameAdjustmentFlag", "toolAdjustmentFlag", "toolAdjustment", "rHandle"];
 values = {      0,          0,            1,          0,          0,        0.2,               2,                     1,                    1,            0.165,         r};
 optns = dictionary(keys,values);
