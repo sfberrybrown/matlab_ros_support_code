@@ -44,7 +44,7 @@ function [bboxes, scores, labels, numObjects, myImg, annotatedImage] = getLabele
 
     % Display
     if optns{'debug'}
-        figure, imshow(annotatedImage);
+        figure(1), imshow(annotatedImage);
     end
 
     %% Specify percentage of acceptable bounding box

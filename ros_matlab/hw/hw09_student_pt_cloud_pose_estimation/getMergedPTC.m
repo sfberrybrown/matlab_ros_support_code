@@ -112,7 +112,7 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
 
         %% e) Visualize
         if optns{'debug'}
-            figure; 
+            figure(2); 
             pcshow(ptCloud_world,'ViewPlane','XY');
             axis on;
         end
@@ -147,10 +147,10 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
     disp("Plotting final merged point cloud for the subzone...")
     
     if optns{'debug'}
-        figure,pcshow(plane_pic,'ViewPlane','XY');axis on;
+        figure(2),pcshow(plane_pic,'ViewPlane','XY');axis on;
         
         % TODO: show nonPlane point cloude with an XY View of the plane and axis on
-        figure,
+        figure(3),
         
         % Labels
         xlabel("X"); ylabel("Y"); zlabel("Z"); title("Cropped merged point cloud wrt base link");
