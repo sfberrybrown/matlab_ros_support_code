@@ -77,6 +77,7 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
         locations = {'f', 'l','r'};
    
     else   
+        % We repeat locations. First four have no angle offset, last four will 
         locations = {'f', 'b', 'l','r',...
                  'f', 'b', 'l','r',};
     end
@@ -85,9 +86,13 @@ function [ptCloud_pic, nonPlane_pic, ptCloud_world, base_to_cam_pose, cam_to_bas
     for iter = 1:length(locations)
 
         % a) Move arm to ith location: 
+
+        % These gripper motions are planar (no gripper rotation)
         if iter < 5
             displaceG = displace_gripper(mat_R_T_G,optns,locations{iter},0.07);
-        elseif iter > 5
+        
+        % These motions rotate the gripper inwards at end of displacement
+        % to center object.         elseif iter > 5
              displaceGA = displace_gripper(mat_R_T_G,optns,locations{iter},0.07,1,0.05);
         end
 
