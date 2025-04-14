@@ -45,7 +45,7 @@ function matlab_pose = ros2matlabPose(p,frameAdjustmentFlag,toolAdjustmentFlag,o
 
     % If there is indeed a toold adjustment flag then change the endEffector
     if toolAdjustmentFlag
-        endEffectorAdjustment = optns{'toolAdjustment'}; %0.165;
+        endEffectorAdjustment = 0.165; %optns{'toolAdjustment'};
     end
 
     % Normal. No frame adjustment needed
