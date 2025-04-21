@@ -29,6 +29,8 @@ function [U,V,W] = makeUVWfromCoeff(coeff)
     U3 = coeff(1, 3) * visual_fitting;
     V3 = coeff(2, 3) * visual_fitting;
     W3 = coeff(3, 3) * visual_fitting;
+
+    % Group
     U = [U1;U2;U3];
     V = [V1;V2;V3];
     W = [W1;W2;W3];
