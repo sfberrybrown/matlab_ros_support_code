@@ -1,0 +1,12 @@
+block1 redBlock  0.434 -0.033 0.64 0 0 0
+block2 greenBlock  0.433 0.041 0.64 0 0 0
+block3 blueBlock  0.521 -0.031 0.64 0 0 0
+block4 purpleBlock  0.522 0.042 0.64 0 0 0
+
+marker1 040_large_marker 0.30 -0.1 0.56  0.00  0.3  0.5
+marker2 040_large_marker 0.36  0.0 0.60  0.00  0    0
+marker3 040_large_marker 0.42 -0.1 0.65  0.03  0    0.5
+
+spam1 010_potted_meat_can 0.30  0.10 0.5  0.0   0.0   0.16
+spam2 010_potted_meat_can 0.45 -0.15 0.5  1.5  1.47  1.58
+spam3 010_potted_meat_can 0.60  0.20 0.5  0.3  0.02  1.18
