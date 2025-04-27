@@ -15,8 +15,7 @@ function grip_result = pick(strategy,objectData,optns)
     % ret (bool): 0 indicates success, other failure.
     %----------------------------------------------------------------------
      
-    % Check type of objectData. If matrix, assign directly; otherwise
-    % extract.
+    % Check type of objectData. If matrix, assign directly; otherwise extract.
     if isequal(size(objectData), [4, 4]) && isnumeric(objectData)
         mat_R_T_M = objectData;
         label = "can";

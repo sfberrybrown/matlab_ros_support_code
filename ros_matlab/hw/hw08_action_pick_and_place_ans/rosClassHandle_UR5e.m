@@ -91,15 +91,15 @@ classdef rosClassHandle_UR5e
             % Yolo Neural Network (careful with the path)
             % General
             disp('Loading YOLO Gral Sim Detector(s)... Please wait...');
-            r.general_detector = load("./vision_tutorials/detectors/detector_gral_sim.mat");   
+            r.general_detector = load("C:\Users\sara\Documents\GitHub\matlab_ros_support_code\ros_matlab\vision_tutorials\detectors\detector_gral_sim.mat");   
 
             % Can
             disp('Loading YOLO Can Sim Detector(s)... Please wait...');
-            r.can_detector     = load("./vision_tutorials/detectors/detector_can_sim.mat");   
+            r.can_detector     = load("C:\Users\sara\Documents\GitHub\matlab_ros_support_code\ros_matlab\vision_tutorials\detectors\detector_can.mat");   
 
             % Pouch % TODO: needs to be trained/replaced for multicolor
             disp('Loading YOLO Pouch Sim Detector(s)... Please wait...');
-            r.pouch_detector   = load("./vision_tutorials/detectors/detector_pouch_sim.mat");   
+            r.pouch_detector   = load("C:\Users\sara\Documents\GitHub\matlab_ros_support_code\ros_matlab\vision_tutorials\detectors\detector_pouch.mat");   
             
             % Marker
             %disp('Loading YOLO Maker Sim Detector(s)... Please wait...');

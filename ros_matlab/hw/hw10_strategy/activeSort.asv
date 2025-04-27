@@ -1,0 +1,81 @@
+function specPickAndPlace(zone, objName, objType, sort, optns)
+
+% zone: zone of interest
+% objName: object of interest
+% objType: can, bottle, spam, marker, or block
+% sort: color bin to be sorted
+    % blue: bottles, markers, blue cubes, red cubes
+    % green: cans, spam, pink cubes, green cubes
+
+% Define Zone
+if zone == "zone1"
+    StartZone = [0.6482   -0.2317    1.4450   -1.2133    0.0003   -0.9226];
+    moveToQ("Custom",optns,StartZone); 
+    pause(1);
+else
+    StartZone = [-1.8380   -0.0978    1.8084   -1.7105    0    4.4452];
+    moveToQ("Custom",optns,StartZone);
+    pause(1);
+end
+
+% Define gripValue (amount grippers need to close)
+if objType == "can"
+    gripValue = 0.24;
+elseif objType == "upBottle"
+    gripValue = 0.521;
+elseif objType == "downBottle"
+    gripValue = 0.21;
+elseif objType == "block"
+    gripValue = 0.55;
+elseif objType == "marker"
+    gripValue = 0.55;
+else % spam
+    gripValue = 0.3;
+end
+
+% Define z_offset (hight to grip object)
+if objType == "can"
+    z_offset = 0.18;
+elseif objType == "upBottle"
+    z_offset = 0.24;
+elseif objType == "downBottle"
+    z_offset = 0.14;
+elseif objType == "block"
+    z_offset = 0;
+elseif objType == "marker"
+    z_offset = 0;
+else % spam
+    z_offset = 0
+
+end
+
+% Hover
+hover = lift(objName, 0.3);
+moveTo(hover, optns);
+
+% Pick
+objName(3,4) = objName(3,4) + z_offset;
+moveTo(objName, optns);
+pause(1);
+doGrip("pick", optns, gripValue);
+pause(1);
+
+% Return to custom pose
+% moveTo(hover, optns);
+% moveToQ("Custom",optns,StartZone);
+% pause(1);
+
+% Move and Place
+if sort == "blue"
+    moveToQ("Custom", optns, [-0.8*pi 0 pi/2.3 -pi/2.3 0 0]); % Blue
+else
+    moveToQ("Custom", optns, [5/8*pi 0 pi/2.3 -pi/2.3 0 0]); % Green
+end
+
+doGrip("place", optns);
+    pause(3);
+
+% Return to start pose
+moveToQ("Custom",optns,StartZone); 
+
+end

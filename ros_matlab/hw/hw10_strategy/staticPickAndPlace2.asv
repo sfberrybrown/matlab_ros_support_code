@@ -1,0 +1,175 @@
+function staticPickAndPlace2(optns)
+% modified hard-coded pick-and-place method
+
+% -----------------------------
+% Define object Locations
+% -----------------------------
+    % Zone 1 Objects: gCan1, rCan1, rBottle1, yBottle1, marker1, spam1,
+    disp("Setting object positions...")
+
+        % gCan1 (on box)
+        gCan1    = [ 0  1  0  -0.3628;...
+                     1  0  0  -0.0071;...
+                     0  0 -1   0.067;...
+                     0  0  0   1];
+
+        % rCan1 (upright)
+        rCan1    = [ 0  1  0  -0.5024;...
+                     1  0  0   0.2653;...
+                     0  0 -1   -0.0419;...
+                     0  0  0   1];
+
+        % rBottle1 (laying down)
+        rBottle1 = [ 0  1  0  -0.6193;...
+                     1  0  0   0.32;...
+                     0  0 -1   -0.0663;...
+                     0  0  0   1];
+        rBottle1 = rBottle1*trotz(pi/2);
+        
+        % yBottle1 (laying down)
+        yBottle1 = [ 0  1  0  -0.5262;...
+                     1  0  0  -0.043;...
+                   % 0  0 -1   0.0335;...
+                     0  0  -1 -0.0665;...
+                     0  0  0   1];
+        yBottle1 = yBottle1*trotz(pi/2);
+        
+        % marker1
+        marker1  = [ 0  1  0  -0.65;...
+                     1  0  0  -0.02;...
+                     0  0  -1 -0.100643;...
+                     0  0  0   1];
+                
+        % spam1
+        spam1    = [ 0  1  0  -0.48;...
+                     1  0  0  0.375;...
+                     0  0  -1 -0.096883;...
+                     0  0  0   1];
+        spam1 = spam1*trotz(pi/2);
+        
+    % Zone 2 Objects: block9, block10, block11, block12, rCan2, gCan3, bBottle1
+    
+        % block9 (red block)
+        block9   = [ 0  1  0   0.692985;...
+                     1  0  0   -0.081658;...
+                     0  0 -1   0.075;...
+                     0  0  0   1];
+        
+        
+        % block10 (green block)
+        block10   = [ 0  1  0   0.692985;...
+                     1  0  0   -0.081658;...
+                     0  0 -1   0.095;...
+                     0  0  0   1];
+        block10 = block10*trotz(pi/4);
+
+        % block11 (blue block)
+        block11   = [ 0  1  0   0.692985;...
+                     1  0  0   -0.081658;...
+                     0  0 -1   0.115;...
+                     0  0  0   1];
+                
+        % block12 (pink block)
+        block12   = [ 0  1  0   0.692985;...
+                     1  0  0   -0.081658;...
+                     0  0 -1   0.14;...
+                     0  0  0   1];
+        block12 = block12*trotz(pi/4);
+
+        % rCan2 (top can)
+        rCan2    = [ 0  1  0   0.67;...
+                     1  0  0   0.0183;...
+                     0  0 -1   0.0748;...
+                     0  0  0   1];
+
+        % gCan3 (bottom can)
+        gCan3    = [ 0  1  0   0.67;... 
+                     1  0  0   0.0183;...
+                     0  0 -1   -0.0416;...
+                     0  0  0   1];
+
+        % bBottle1 (upright)
+        bBottle1 = [ 0  1  0   0.465;...
+                     1  0  0  -0.0702;...
+                     0  0 -1   -0.0015;...
+                     0  0  0   1];
+
+% -----------------------------
+% Pick and Place Objects
+% -----------------------------
+    % Zone 1 Pick-and-Place
+    disp("Sorting Zone 1...")    
+
+        % marker1
+        disp("Marker 1")
+        activeSort("zone1", marker1, "marker", "blue", optns);
+        pause(5);    
+
+        % gCan1
+        disp("Green Can 1")
+        activeSort("zone1", gCan1, "can", "green", optns);
+        pause(5);
+
+        % rCan1
+        disp("Red Can 1")
+        activeSort("zone1", rCan1, "can", "green", optns);
+        pause(5);
+
+        % rBottle1
+        disp("Red Bottle 1")
+        activeSort("zone1", rBottle1, "downBottle", "blue", optns);
+        pause(5);
+
+        % yBottle1
+        disp("Yellow Bottle 1")
+        activeSort("zone1", yBottle1, "downBottle", "blue", optns);
+        pause(5);
+
+        % spam1
+        disp("Spam 1")
+        activeSort("zone1", spam1, "spam", "green", optns);
+        pause(5);
+        
+    % Zone 2 Pick-and-Place
+    disp("Sorting Zone 2...")
+
+    StartPos = [-1.8380   -0.0978    1.8084   -1.7105    0    4.4452]; 
+    moveToQ("Custom",optns,StartZone);
+    pause(3);
+        
+        % rCan2 (top can)
+        disp("Red Can 2")
+        activeSort("zone2", rCan2, "can", "green", optns);
+        pause(5);
+
+        % gCan3 (bottom can)
+        disp("Green Can 3")
+        activeSort("zone2", gCan3, "can", "green", optns);
+        pause(5);
+
+        % bBottle1 (upright)
+        disp("Blue Bottle 1")
+        activeSort("zone2", bBottle1, "upBottle", "blue", optns);
+        pause(5);
+        
+        % block12 (pink block)
+        disp("Pink Block")
+        activeSort("zone2", block12, "block", "green", optns);
+        pause(5);
+
+        % block11 (blue block)
+        disp("Blue Block")
+        activeSort("zone2", block11, "block", "blue", optns);
+        pause(5);
+
+        % block10 (green block)
+        disp("Green Block")
+        activeSort("zone2", block10, "block", "green", optns);
+        pause(5);
+
+        % block9 (red block)
+        disp("Red Block")
+        activeSort("zone2", block9, "block", "blue", optns);
+        pause(5);
+
+end
