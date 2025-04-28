@@ -173,6 +173,7 @@ function staticPickAndPlace2(optns)
     % Zone 1 Pick-and-Place
     disp("Sorting Zone 1...")    
     goHome('qr', optns);
+    pause(7);
     moveToQ("Custom", optns, [0.6482   -0.2317    1.4450   -1.2133    0.0003   -0.9226]);
     pause(7);
 
